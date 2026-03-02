@@ -16,3 +16,5 @@ Net component changelog:
 
  * Adds a couple of small tests/examples
 
+ * now NET_REFRESH_LATENCY can be modifed to the value of environment variable
+   PAPI_NET_REFRESH_LATENCY if defined

@@ -39,7 +39,7 @@ papi_vector_t _net_vector;
  ********************************************************************/
 
 /* Network stats refresh latency in usec (default: 1 sec) */
-#define NET_REFRESH_LATENCY   1000000
+static long long NET_REFRESH_LATENCY = 1000000;
 
 #define NET_PROC_FILE          "/proc/net/dev"
 
@@ -366,6 +366,10 @@ _net_init_component( int cidx  )
 
     /* Export the component id */
     _net_vector.cmp_info.CmpIdx = cidx;
+
+    /* Set the net refresh latency */
+    char* refresh_latency = getenv("PAPI_NET_REFRESH_LATENCY");
+    if (refresh_latency != NULL) NET_REFRESH_LATENCY = atoll(refresh_latency);
 
   fn_exit:
     _papi_hwd[cidx]->cmp_info.disabled = retval;
