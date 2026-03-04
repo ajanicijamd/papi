@@ -39,7 +39,7 @@ papi_vector_t _net_vector;
  ********************************************************************/
 
 /* Network stats refresh latency in usec (default: 1 sec) */
-static long long NET_REFRESH_LATENCY = 1000000;
+static long long NET_REFRESH_LATENCY = 100000;
 
 #define NET_PROC_FILE          "/proc/net/dev"
 
